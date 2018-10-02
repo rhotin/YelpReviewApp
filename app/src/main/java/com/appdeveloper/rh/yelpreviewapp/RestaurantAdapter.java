@@ -58,7 +58,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             super(itemView);
 
             textTitle = itemView.findViewById(R.id.nameTV);
-            textReview = itemView.findViewById(R.id.detailCountReviewsTV);
+            textReview = itemView.findViewById(R.id.countReviewsTV);
 
         }
     }

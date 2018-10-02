@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/detailCountReviewsTV"
+        android:id="@+id/countReviewsTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -56,5 +56,5 @@
         android:numStars="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/detailCountReviewsTV" />
+        app:layout_constraintTop_toBottomOf="@+id/countReviewsTV" />
 </android.support.constraint.ConstraintLayout>
