@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,7 +39,7 @@ public class ResultsFragment extends Fragment {
     private DividerItemDecoration dividerItemDecoration;
     private List<Restaurant> restaurantList;
     private RecyclerView.Adapter adapter;
-    private String url = "https://api.yelp.com/v3/businesses/search?location=toronto";
+    private String url = "https://api.yelp.com/v3/businesses/search?location=toronto&limit=15&offset=0";
 
     @Nullable
     @Override
@@ -72,8 +73,13 @@ public class ResultsFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("Test", "test1");
-                        for (int i = 0; i < response.length(); i++) {
+                        JSONArray responseArr = null;
+                        try {
+                            responseArr = response.getJSONArray("businesses");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for (int i = 0; i < responseArr.length(); i++) {
                             try {
                                 Log.e("Test", "test" + i);
                                 JSONObject jsonObject = response.
