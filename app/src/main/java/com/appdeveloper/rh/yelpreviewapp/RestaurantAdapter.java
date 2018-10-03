@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import androidx.navigation.NavController;
@@ -39,6 +41,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         holder.textTitle.setText(restaurant.getName());
         holder.textReview.setText(String.valueOf(restaurant.getReviewCount()));
         holder.ratingBar.setRating((float) restaurant.getRating());
+        Glide.with(context).load(restaurant.getImageUrl()).into(holder.busImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +59,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
                 bundle.putString("busCountry", restaurant.getLocationCountry());
                 bundle.putString("busState", restaurant.getLocationState());
                 bundle.putString("busZip", restaurant.getLocationZipCode());
-
 
                 final NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.toDetailFragment, bundle);
