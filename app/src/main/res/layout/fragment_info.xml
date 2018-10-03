@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Info"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="# Yelp Review App for Android\n
+For this challenge, you will use Yelp’s API\n
+https://www.yelp.com/developers/documentation/v3/get_started\n
+Build an Android app of Yelp Reviews with following requirements:\n
+1. App has 3 main screens: Search filter, Search List, Business Detail\n
+2. Search filter screen displays search criteria: price range, search text, category\n
+3. When user type string in Category area, matching category name list should be\n
+displayed so the user easily select category.\n
+4. When user touch “Search” button, Search result displays in the Search result list screen.\n
+5. Search result screen: Scrollable 15 restaurants table/collection view. Each cell should\n
+represent business image, name, count of reviews and rating. Restaurants are sorted\n
+alphabetically. It is also selectable to go detail page.\n
+6. Search result list screen should support pagination: When scroll reaches to end of the\n
+list item, it should display another 15 items.\n
+7. Business Detail view should represent business name, address, count of reviews, rating\n
+and latest 3 reviews with user id and photo\n
+The app must be Android native application coding in Java.\n
+The app should have at least one Fragment.\n
+You can implement app with any architecture patterns.\n
+It could be better if it is testable and if it includes unit tests.\n
+You are free to use any libraries you want to make your life easier.\n
+Since you are building without wireframe, the UI does not need to be fancy. It just needs to be\n
+functional and should have the ability to easily style once the designs and assets become\n
+available.\n
+Use recent version of Android studio and Android SDK.\n
+Source code can be delivered in a zip file or github page.\n" />
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

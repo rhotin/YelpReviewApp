@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -16,7 +18,9 @@ import android.widget.TextView;
  */
 public class DetailFragment extends Fragment {
 
-    TextView detailName, detailRatings;
+    ImageView detailImageView;
+    TextView detailName, detailRatings, detailAddress;
+    RatingBar detailRatingBar;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -28,6 +32,11 @@ public class DetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
         detailName = v.findViewById(R.id.detailNameTV);
+        detailRatings = v.findViewById(R.id.detailCountReviewsTV);
+        detailRatingBar = v.findViewById(R.id.detailRatingBar);
+        detailAddress = v.findViewById(R.id.detailAddressTV);
+        detailImageView = v.findViewById(R.id.detailPhotoIV);
+
 
         return v;
     }
@@ -36,5 +45,14 @@ public class DetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         detailName.setText(getArguments().getString("busName", "name"));
+        detailRatings.setText(String.valueOf(getArguments().getInt("busReviews", 0)));
+        detailRatingBar.setRating((float) getArguments().getDouble("busRating", 0));
+        detailAddress.setText(getArguments().getString("busAddress1") + "\t" +
+                getArguments().getString("busAddress2") + "\t" +
+                getArguments().getString("busAddress3") + "\n" +
+                getArguments().getString("busCity") + " " +
+                getArguments().getString("busState") + " " +
+                getArguments().getString("busCountry") + "\n" +
+                getArguments().getString("busZip") + "\n");
     }
 }

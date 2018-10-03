@@ -1,6 +1,7 @@
 package com.appdeveloper.rh.yelpreviewapp;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +32,9 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ResultsFragment extends Fragment {
 
@@ -59,12 +63,25 @@ public class ResultsFragment extends Fragment {
         mList.addItemDecoration(dividerItemDecoration);
         mList.setAdapter(adapter);
 
-        makeUrl(getArguments().getString("searchPrice1"),
-                getArguments().getString("searchPrice2"),
-                getArguments().getString("searchPrice3"),
-                getArguments().getString("searchPrice4"),
-                getArguments().getString("searchCategory"),
-                getArguments().getString("searchTerm"));
+        final SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        Log.e("TEST", prefs.getString("category", "blank"));
+
+        String defPrice1 = null, defPrice2 = null, defPrice3 = null, defPrice4 = null;
+        if (prefs.getBoolean("dollarSign1RB", false))
+            defPrice1 = "$";
+        if (prefs.getBoolean("dollarSign2RB", false))
+            defPrice2 = "$$";
+        if (prefs.getBoolean("dollarSign3RB", false))
+            defPrice3 = "$$$";
+        if (prefs.getBoolean("dollarSign4RB", false))
+            defPrice4 = "$$$$";
+
+        makeUrl(getArguments().getString("searchPrice1", defPrice1),
+                getArguments().getString("searchPrice2", defPrice2),
+                getArguments().getString("searchPrice3", defPrice3),
+                getArguments().getString("searchPrice4", defPrice4),
+                getArguments().getString("searchCategory", prefs.getString("category",null)),
+                getArguments().getString("searchTerm", prefs.getString("search",null)));
 
         getData();
 
@@ -86,9 +103,15 @@ public class ResultsFragment extends Fragment {
         if (searchPrice4 != null) {
             priceL.add("4");
         }
+        if (searchTerm.isEmpty()) {
+            searchTerm = "";
+        }
         String price = TextUtils.join(",", priceL);
         url = "https://api.yelp.com/v3/businesses/search?location=toronto&limit=50&offset=0&price=" + price +
-                "&categories=" + searchCategory + "&term=" + searchTerm;
+                "&term=" + searchTerm;
+        if (!searchCategory.isEmpty()){
+            url += "&categories=" + searchCategory;
+        }
         Log.e("URL", url);
 
 

@@ -11,10 +11,8 @@
     <ImageView
         android:id="@+id/detailPhotoIV"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="131dp"
-        app:layout_constraintBottom_toTopOf="@+id/reviewList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
