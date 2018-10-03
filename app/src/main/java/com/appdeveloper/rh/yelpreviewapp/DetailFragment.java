@@ -53,6 +53,6 @@ public class DetailFragment extends Fragment {
                 getArguments().getString("busCity") + " " +
                 getArguments().getString("busState") + " " +
                 getArguments().getString("busCountry") + "\n" +
-                getArguments().getString("busZip") + "\n");
+                getArguments().getString("busZip") + "\n" );
     }
 }
