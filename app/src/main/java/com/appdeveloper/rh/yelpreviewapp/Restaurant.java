@@ -141,11 +141,11 @@ public class Restaurant {
         this.coordinatesLatitude = coordinatesLatitude;
     }
 
-    public double getCoordinatedLongitude() {
+    public double getCoordinatesLongitude() {
         return coordinatedLongitude;
     }
 
-    public void setCoordinatedLongitude(double coordinatedLongitude) {
+    public void setCoordinatesLongitude(double coordinatedLongitude) {
         this.coordinatedLongitude = coordinatedLongitude;
     }
 

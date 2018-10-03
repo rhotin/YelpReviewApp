@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 
 import java.util.Objects;
 
@@ -22,11 +22,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SearchFragment extends Fragment {
 
-    RadioButton dollarSignAny;
-    RadioButton dollarSign1;
-    RadioButton dollarSign2;
-    RadioButton dollarSign3;
-    RadioButton dollarSign4;
+    CheckBox dollarSign1;
+    CheckBox dollarSign2;
+    CheckBox dollarSign3;
+    CheckBox dollarSign4;
     AutoCompleteTextView categoryACTV;
     EditText searchET;
     Button searchBtn;
@@ -38,7 +37,6 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search, null);
 
-        dollarSignAny = v.findViewById(R.id.dollarSignAny);
         dollarSign1 = v.findViewById(R.id.dollarSign1);
         dollarSign2 = v.findViewById(R.id.dollarSign2);
         dollarSign3 = v.findViewById(R.id.dollarSign3);
@@ -50,7 +48,6 @@ public class SearchFragment extends Fragment {
         final SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("MyPrefs", MODE_PRIVATE);
         editor = prefs.edit();
 
-        dollarSignAny.setChecked(prefs.getBoolean("anyRB", true));
         dollarSign1.setChecked(prefs.getBoolean("dollarSign1RB", false));
         dollarSign2.setChecked(prefs.getBoolean("dollarSign2RB", false));
         dollarSign3.setChecked(prefs.getBoolean("dollarSign3RB", false));
@@ -70,7 +67,7 @@ public class SearchFragment extends Fragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putBoolean("anyRB", dollarSignAny.isChecked());
+
                 editor.putBoolean("dollarSign1RB", dollarSign1.isChecked());
                 editor.putBoolean("dollarSign2RB", dollarSign2.isChecked());
                 editor.putBoolean("dollarSign3RB", dollarSign3.isChecked());
@@ -79,7 +76,19 @@ public class SearchFragment extends Fragment {
                 editor.putString("search", searchET.getText().toString());
                 editor.commit();
 
-                navController.navigate(R.id.toResultsFragment);
+                Bundle searchBundle = new Bundle();
+                if (dollarSign1.isChecked())
+                    searchBundle.putString("searchPrice1", "$");
+                if (dollarSign2.isChecked())
+                    searchBundle.putString("searchPrice2", "$$");
+                if (dollarSign3.isChecked())
+                    searchBundle.putString("searchPrice3", "$$$");
+                if (dollarSign4.isChecked())
+                    searchBundle.putString("searchPrice4", "$$$$");
+                searchBundle.putString("searchCategory", categoryACTV.getText().toString());
+                searchBundle.putString("searchTerm", searchET.getText().toString());
+
+                navController.navigate(R.id.toResultsFragment, searchBundle);
             }
         });
     }

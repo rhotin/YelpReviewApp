@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/businessIV"
         android:layout_width="100dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/businessIV"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toBottomOf="@+id/nameTV" />
 
     <RatingBar
@@ -55,6 +55,6 @@
         android:clickable="false"
         android:numStars="5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/countReviewsTV" />
+        app:layout_constraintStart_toEndOf="@+id/businessIV"
+        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
 </android.support.constraint.ConstraintLayout>

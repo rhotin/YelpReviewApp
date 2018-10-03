@@ -32,54 +32,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filterTitleTV" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+
+    <CheckBox
+        android:id="@+id/dollarSign1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="$"
+        app:layout_constraintEnd_toStartOf="@+id/dollarSign2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/priceTitleTV">
+        app:layout_constraintTop_toBottomOf="@id/priceTitleTV" />
 
-        <RadioButton
-            android:id="@+id/dollarSignAny"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="ANY" />
+    <CheckBox
+        android:id="@+id/dollarSign2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="$$"
+        app:layout_constraintEnd_toStartOf="@+id/dollarSign3"
+        app:layout_constraintStart_toEndOf="@+id/dollarSign1"
+        app:layout_constraintTop_toBottomOf="@id/priceTitleTV" />
 
-        <RadioButton
-            android:id="@+id/dollarSign1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="$" />
+    <CheckBox
+        android:id="@+id/dollarSign3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="$$$"
+        app:layout_constraintEnd_toStartOf="@+id/dollarSign4"
+        app:layout_constraintStart_toEndOf="@id/dollarSign2"
+        app:layout_constraintTop_toBottomOf="@id/priceTitleTV" />
 
-        <RadioButton
-            android:id="@+id/dollarSign2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="$$" />
+    <CheckBox
+        android:id="@+id/dollarSign4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="$$$$"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dollarSign3"
+        app:layout_constraintTop_toBottomOf="@id/priceTitleTV" />
 
-        <RadioButton
-            android:id="@+id/dollarSign3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="$$$" />
-
-        <RadioButton
-            android:id="@+id/dollarSign4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="$$$$" />
-
-    </RadioGroup>
 
     <TextView
         android:id="@+id/categoryTitleTV"
@@ -89,7 +80,7 @@
         android:layout_marginTop="16dp"
         android:text="Category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/dollarSign1" />
 
     <AutoCompleteTextView
         android:id="@+id/categoryACTV"
