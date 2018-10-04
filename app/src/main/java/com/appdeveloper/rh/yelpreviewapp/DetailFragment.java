@@ -87,7 +87,6 @@ public class DetailFragment extends Fragment {
 
     private void makeUrl(String busId) {
         url = "https://api.yelp.com/v3/businesses/" + busId + "/reviews";
-
         Log.e("URL", url);
     }
 
